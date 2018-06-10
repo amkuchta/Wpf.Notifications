@@ -31,7 +31,7 @@ namespace Enterwell.Clients.Wpf.Notifications
         /// <summary>
         /// Creates the message.
         /// </summary>
-        /// <returns>Returns new instance of notification message builder tha tis used to create notification message.</returns>
+        /// <returns>Returns new instance of notification message builder that is used to create notification message.</returns>
         public static NotificationMessageBuilder CreateMessage()
         {
             return new NotificationMessageBuilder();
@@ -104,6 +104,60 @@ namespace Enterwell.Clients.Wpf.Notifications
         }
 
         /// <summary>
+        /// Sets the top additional content.
+        /// </summary>
+        /// <param name="additionalContentTop">The additional content.</param>
+        public void SetAdditionalContentTop(object additionalContentTop)
+        {
+            this.Message.AdditionalContentTop = additionalContentTop;
+        }
+
+        /// <summary>
+        /// Sets the bottom additional content.
+        /// </summary>
+        /// <param name="additionalContentBottom">The additional content.</param>
+        public void SetAdditionalContentBottom(object additionalContentBottom)
+        {
+            this.Message.AdditionalContentBottom = additionalContentBottom;
+        }
+
+        /// <summary>
+        /// Sets the left additional content.
+        /// </summary>
+        /// <param name="additionalContentLeft">The additional content.</param>
+        public void SetAdditionalContentLeft(object additionalContentLeft)
+        {
+            this.Message.AdditionalContentLeft = additionalContentLeft;
+        }
+
+        /// <summary>
+        /// Sets the right additional content.
+        /// </summary>
+        /// <param name="additionalContentRight">The additional content.</param>
+        public void SetAdditionalContentRight(object additionalContentRight)
+        {
+            this.Message.AdditionalContentRight = additionalContentRight;
+        }
+
+        /// <summary>
+        /// Sets the center additional content.
+        /// </summary>
+        /// <param name="additionalContentMain">The additional content.</param>
+        public void SetAdditionalContentMain(object additionalContentMain)
+        {
+            this.Message.AdditionalContentMain = additionalContentMain;
+        }
+
+        /// <summary>
+        /// Sets the additional content over the badge.
+        /// </summary>
+        /// <param name="additionalContentOverBadge">The additional content.</param>
+        public void SetAdditionalContentOverBadge(object additionalContentOverBadge)
+        {
+            this.Message.AdditionalContentOverBadge = additionalContentOverBadge;
+        }
+
+        /// <summary>
         /// Sets the text brush.
         /// </summary>
         public void SetForeground(Brush brush)
@@ -117,33 +171,33 @@ namespace Enterwell.Clients.Wpf.Notifications
         /// <param name="animates"></param>
         public void SetAnimates(bool animates)
         {
-            if (this.Message is INotificationAnimation)
+            if (this.Message is INotificationAnimation animation)
             {
-                ((INotificationAnimation)this.Message).Animates = animates;
+                animation.Animates = animates;
             }
         }
 
         /// <summary>
         /// Sets the duration for the animation in (in seconds).
         /// </summary>
-        /// <param name="animates"></param>
+        /// <param name="duration">The in animation duration (in seconds).</param>
         public void SetAnimationInDuration(double duration)
         {
-            if (this.Message is INotificationAnimation)
+            if (this.Message is INotificationAnimation animation)
             {
-                ((INotificationAnimation)this.Message).AnimationInDuration = duration;
+                animation.AnimationInDuration = duration;
             }
         }
 
         /// <summary>
         /// Sets the duration for the animation out (in seconds).
         /// </summary>
-        /// <param name="animates"></param>
+        /// <param name="duration">The out animation duration (in seconds).</param>
         public void SetAnimationOutDuration(double duration)
         {
-            if (this.Message is INotificationAnimation)
+            if (this.Message is INotificationAnimation animation)
             {
-                ((INotificationAnimation)this.Message).AnimationOutDuration = duration;
+                animation.AnimationOutDuration = duration;
             }
         }
 
@@ -153,9 +207,9 @@ namespace Enterwell.Clients.Wpf.Notifications
         /// <param name="animation"></param>
         public void SetAnimationIn(AnimationTimeline animation)
         {
-            if (this.Message is INotificationAnimation)
+            if (this.Message is INotificationAnimation notificationAnimation)
             {
-                ((INotificationAnimation)this.Message).AnimationIn = animation;
+                notificationAnimation.AnimationIn = animation;
             }
         }
 
@@ -165,9 +219,9 @@ namespace Enterwell.Clients.Wpf.Notifications
         /// <param name="animation"></param>
         public void SetAnimationOut(AnimationTimeline animation)
         {
-            if (this.Message is INotificationAnimation)
+            if (this.Message is INotificationAnimation notificationAnimation)
             {
-                ((INotificationAnimation)this.Message).AnimationOut = animation;
+                notificationAnimation.AnimationOut = animation;
             }
         }
 
@@ -177,9 +231,9 @@ namespace Enterwell.Clients.Wpf.Notifications
         /// <param name="property"></param>
         public void SetAnimationInDependencyProperty(DependencyProperty property)
         {
-            if (this.Message is INotificationAnimation)
+            if (this.Message is INotificationAnimation animation)
             {
-                ((INotificationAnimation)this.Message).AnimationInDependencyProperty = property;
+                animation.AnimationInDependencyProperty = property;
             }
         }
 
@@ -189,9 +243,9 @@ namespace Enterwell.Clients.Wpf.Notifications
         /// <param name="property"></param>
         public void SetAnimationOutDependencyProperty(DependencyProperty property)
         {
-            if (this.Message is INotificationAnimation)
+            if (this.Message is INotificationAnimation animation)
             {
-                ((INotificationAnimation)this.Message).AnimationOutDependencyProperty = property;
+                animation.AnimationOutDependencyProperty = property;
             }
         }
 

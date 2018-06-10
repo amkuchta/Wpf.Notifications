@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Enterwell.Clients.Wpf.Notifications.Controls;
 
 namespace Enterwell.Clients.Wpf.Notifications.Sample
 {
@@ -52,6 +49,7 @@ namespace Enterwell.Clients.Wpf.Notifications.Sample
                 .Accent("#E0A030")
                 .Background("#333")
                 .HasBadge("Warn")
+                .HasHeader("Error")
                 .HasMessage("Failed to retrieve data.")
                 .WithButton("Try again", button => { })
                 .Dismiss().WithButton("Ignore", button => { })
@@ -86,6 +84,61 @@ namespace Enterwell.Clients.Wpf.Notifications.Sample
                 .Dismiss().WithButton("Update now", button => { })
                 .Dismiss().WithButton("Release notes", button => { })
                 .Dismiss().WithDelay(TimeSpan.FromSeconds(5))
+                .Queue();
+        }
+
+        private void ButtonBaseAdditionalContentOnClick(object sender, RoutedEventArgs e)
+        {
+            this.Manager
+                .CreateMessage()
+                .Accent("#1751C3")
+                .Background("#333")
+                .Foreground("#333")
+                .HasBadge("Info")
+                .HasHeader("Header")
+                .HasMessage("This is the message!")
+                .WithAdditionalContent(ContentLocation.Top, new Border
+                {
+                    Height = 25,
+                    VerticalAlignment = VerticalAlignment.Stretch,
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    Background = Brushes.Red
+                })
+                .WithAdditionalContent(ContentLocation.Bottom, new Border
+                {
+                    Height = 25,
+                    VerticalAlignment = VerticalAlignment.Stretch,
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    Background = Brushes.Green
+                })
+                .WithAdditionalContent(ContentLocation.Left, new Border
+                {
+                    Width = 25,
+                    VerticalAlignment = VerticalAlignment.Stretch,
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    Background = Brushes.Yellow
+                })
+                .WithAdditionalContent(ContentLocation.Right, new Border
+                {
+                    Width = 25,
+                    VerticalAlignment = VerticalAlignment.Stretch,
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    Background = Brushes.Violet
+                })
+                .WithAdditionalContent(ContentLocation.Main, new Border
+                {
+                    MinHeight = 50,
+                    VerticalAlignment = VerticalAlignment.Stretch,
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
+                    Background = Brushes.Orange
+                })
+                .WithAdditionalContent(ContentLocation.AboveBadge, new Border
+                {
+                    Height = 40,
+                    Width = 40,
+                    Background = Brushes.Indigo
+                })
+                .Dismiss().WithButton("Dismiss", button => { })
                 .Queue();
         }
 
